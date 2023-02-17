@@ -8,8 +8,9 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
+            <Nav.Link href="#features">Home</Nav.Link>
             <Nav.Link href="#features">Today</Nav.Link>
-            <Nav.Link href="#pricing">in 4 days</Nav.Link>
+            <Nav.Link href="#pricing">4 days prediction</Nav.Link>
             {/* <NavDropdown title="Contact" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.2">Email</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Phone</NavDropdown.Item>
