@@ -1,5 +1,4 @@
-import "bootstrap";
-import "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import NavBar from "./components/NavBar";
 
