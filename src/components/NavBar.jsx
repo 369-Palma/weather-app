@@ -1,4 +1,5 @@
-import { Navbar, Container, Nav /* , NavDropdown */ } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -8,13 +9,11 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Home</Nav.Link>
+            <Link className="nav-link" to="/">
+              Home
+            </Link>
             <Nav.Link href="#features">Today</Nav.Link>
-            <Nav.Link href="#pricing">4 days prediction</Nav.Link>
-            {/* <NavDropdown title="Contact" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.2">Email</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Phone</NavDropdown.Item>
-            </NavDropdown> */}
+            <Nav.Link href="#pricing"> 4 days prediction</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
