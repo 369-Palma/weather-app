@@ -15,7 +15,7 @@ function App() {
       <BrowserRouter>
         <NavBar></NavBar>
         <Routes>
-          <Route path="/" element={<SearchTab />}></Route>
+          <Route path="/" element={<SearchTab />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,17 +1,15 @@
 import { Row, Col, Form } from "react-bootstrap";
-import { useState } from "react";
-/* import SchedaMeteo from "./SchedaMeteo"; */
+import { useState, useEffect } from "react";
+/* import Scheda from "./SchedaMeteo"; */
 
 const SearchTab = () => {
-  /* const [latQuery, setLatQuery] = useState("");
-  const [lonQuery, setLonQuery] = useState(""); */
-
   const [cityName, setCityName] = useState("");
   const [lonQuery, setLonQuery] = useState("");
   const [latQuery, setLatQuery] = useState("");
+  /* const [dataCitta, setDataCitta] = useState({}); */
+  const [dataWeather, setDataWeather] = useState([]);
+  /* const [dataWeather, setDataWeather] = useState([]); */
 
-  /*   const latitude = (e) => setLatQuery(e.target.value);
-  const longitude = (e) => setLonQuery(e.target.value); */
   const handleChange = (e) => {
     setCityName(e.target.value);
   };
@@ -24,7 +22,31 @@ const SearchTab = () => {
         const data = await res.json();
         console.log(data);
         setLatQuery(data.lat);
+        console.log(latQuery);
         setLonQuery(data.lon);
+        console.log(lonQuery);
+      } else {
+        console.log("Badoglio!");
+      }
+    } catch (error) {
+      console.log("Something went wrong during the call", error);
+    }
+  };
+  const mainUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=affeeeefd8a69ba026cefacfe17d898f`;
+  /*   const dataUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latQuery}&lon=${lonQuery}&appid=affeeeefd8a69ba026cefacfe17d898f`;
+  ;
+
+  /* https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key} */
+
+  const fetchFunction = async () => {
+    try {
+      let res = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=41.1257843&lon=16.8620293&appid=affeeeefd8a69ba026cefacfe17d898f`
+      );
+      if (res.ok) {
+        const dataW = await res.json();
+        setDataWeather(dataW);
+        console.log(dataWeather);
       } else {
         console.log("Badoglio!");
       }
@@ -33,9 +55,26 @@ const SearchTab = () => {
     }
   };
 
-  /*   const dataUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latQuery}&lon=${lonQuery}&appid=affeeeefd8a69ba026cefacfe17d898f`;
-   */ const mainUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=affeeeefd8a69ba026cefacfe17d898f`;
-  /* const mainUrl = `http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}` */
+  useEffect(() => {
+    fetchFunction();
+  }, [latQuery]);
+  /* const fetchFunction = async () => {
+    try {
+      let res = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=41.2&lon=68.5&appid=affeeeefd8a69ba026cefacfe17d898f`
+      );
+      if (res.ok) {
+        const dataW = await res.json();
+        setDataWeather(dataW);
+        console.log(dataWeather);
+      } else {
+        console.log("Badoglio!");
+      }
+    } catch (error) {
+      console.log("Something went wrong during the call", error);
+    }
+  };
+ */
 
   return (
     <>
@@ -46,8 +85,9 @@ const SearchTab = () => {
           </strong>
         </Col>
         <Col md={2} className="mx-auto">
-          <Form onSubmit={handleSubmit} className="my-4">
+          <Form onSubmit={handleSubmit} className="my-4 ">
             <Form.Control
+              className="text-center"
               type="search"
               placeholder="Enter your city name"
               value={cityName}
@@ -55,14 +95,9 @@ const SearchTab = () => {
             />
           </Form>
         </Col>
-        {/* <Col xs={10} className="my-3 mx-auto">
-          <Container className="d-flex flex-column justify-content-between">
-            <Row>
-              <p>{data.name} </p>
-              {data.main ? <h1> {data.main.temp} </h1> : null}
-            </Row>
-          </Container>
-        </Col> */}
+        <Col xs={10} className="my-3 mx-auto">
+          {/*  <Scheda></Scheda> */}
+        </Col>
       </Row>
     </>
   );
