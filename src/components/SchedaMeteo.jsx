@@ -1,7 +1,9 @@
 /* import { Container, Row } from "react-bootstrap";
 import "./SearchTab";
 
-const scheda = () => {
+const scheda = ({ data }) => {
+
+
   return (
     <Container className="d-flex flex-column justify-content-between">
       <Row>
@@ -12,5 +14,4 @@ const scheda = () => {
   );
 };
 
-export default scheda;
- */
+export default scheda; */

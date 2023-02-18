@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="info" text="light">
       <Container>
         <Navbar.Brand href="#home">MyMeteo</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
