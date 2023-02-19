@@ -1,4 +1,4 @@
-import { Container, Row, Col } from "react-bootstrap";
+/* import { Container, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
 const Scheda = ({ dataW }) => {
@@ -26,7 +26,7 @@ const Scheda = ({ dataW }) => {
     } catch (error) {
       console.log("Something went wrong during the call", error);
     }
-  };
+  }; */
   /*   const [dataWeather, setDataWeather] = useState(null); 
 const [lonQuery, setLonQuery] = useState("");
   const [latQuery, setLatQuery] = useState(""); 
