@@ -1,5 +1,5 @@
-/* import { Container, Row, Col } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+/*import { useState, useEffect } from "react";
 
 const Scheda = ({ dataW }) => {
   const [data, setData] = useState({});
@@ -27,7 +27,7 @@ const Scheda = ({ dataW }) => {
       console.log("Something went wrong during the call", error);
     }
   }; */
-  /*   const [dataWeather, setDataWeather] = useState(null); 
+/*   const [dataWeather, setDataWeather] = useState(null); 
 const [lonQuery, setLonQuery] = useState("");
   const [latQuery, setLatQuery] = useState(""); 
 
@@ -37,30 +37,31 @@ const [lonQuery, setLonQuery] = useState("");
     fetchFunction();
   }, [dataW]); */
 
+const Scheda = (props) => {
   return (
     <Container className=" container d-flex flex-column justify-content-between">
       <Row>
         <Col className="location">
-          <p> Bari </p>
+          <p> {props.name}</p>
         </Col>
         <Col className="temperature fs-2 ">
-          <p className="bold"> 20 °C </p>
+          <p className="bold"> {props.main.temp} °C </p>
         </Col>
         <Col className="info">
-          <p> Clouds</p>
+          <p> {props.weather.main}</p>
         </Col>
       </Row>
       <Row className="bottom">
         <Col className="feels">
-          <p className="bold">15°C</p>
+          <p className="bold">{props.main.feels_like} °F</p>
           <p>Feels like</p>
         </Col>
         <Col className="humidity">
-          <p className="bold">15%</p>
+          <p className="bold">{props.main.humidity} %</p>
           <p>Humidity</p>
         </Col>
         <Col className="wind">
-          <p className="bold">15 MPH</p>
+          <p className="bold">{props.wind.speed} MPH</p>
           <p>Wind speed</p>
         </Col>
       </Row>

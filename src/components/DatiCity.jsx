@@ -1,4 +1,4 @@
-const DatiCity = ({ name, state, lon, lat }) => {
+/* const DatiCity = ({ name, state, lon, lat }) => {
   return (
     <div>
       <p>Nome città: {name}</p>
@@ -9,4 +9,4 @@ const DatiCity = ({ name, state, lon, lat }) => {
   );
 };
 
-export default DatiCity;
+export default DatiCity; */
