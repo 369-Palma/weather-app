@@ -1,5 +1,5 @@
 import { Row, Col, Form } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 /* import DatiCity from "./DatiCity"; */
 /* import Scheda from "./SchedaMeteo"; */
 
@@ -17,7 +17,8 @@ const SearchTab = () => {
     let respWeather = await fetch(weatherUrl);
     let dataWeather = await respWeather.json();
     setWeatherData(dataWeather);
-
+    console.log(dataWeather);
+    console.log(weatherData);
     return dataWeather;
   };
 
@@ -35,21 +36,22 @@ const SearchTab = () => {
         console.log("res.json data city:", city);
         console.log(city[0].lat);
         setLatQuery(city[0].lat);
+        console.log(city[0].lon);
         setLonQuery(city[0].lon);
-        await fetchweather();
+        await fetchweather(city[0].lat, city[0].lon);
       }
     } catch (error) {
       console.log("Something went wrong during the call", error);
     }
   };
-  /* useEffect(() => {
+  /*  useEffect(() => {
     if (latQuery.length > 0) {
       fetchweather();
     } else {
       alert("Ops! We didn't find the city");
     }
-  }, [latQuery]);
- */
+  }, [latQuery]); */
+
   return (
     <>
       <Row className="d-flex flex-column mx-5 align-content-center mt-3 text-bg-primary border border-secondary">
