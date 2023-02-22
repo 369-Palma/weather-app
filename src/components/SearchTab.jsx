@@ -34,9 +34,7 @@ const SearchTab = () => {
       if (res.ok) {
         const city = await res.json();
         console.log("res.json data city:", city);
-        console.log(city[0].lat);
         setLatQuery(city[0].lat);
-        console.log(city[0].lon);
         setLonQuery(city[0].lon);
         await fetchweather(city[0].lat, city[0].lon);
       }
@@ -72,13 +70,6 @@ const SearchTab = () => {
           </Form>
         </Col>
         <Col xs={10} className="my-3 mx-auto">
-          {/*  <div>
-            <p>Nome città: {props.name}</p>
-            <p>Stato: {props.state}</p>
-            <p>Longitudine: {props.lon}</p>
-            <p>Latitudine: {props.lat}</p>
-          </div> */}
-          {/* <DatiCity></DatiCity> */}
           {/* <Scheda></Scheda> */}
         </Col>
       </Row>
