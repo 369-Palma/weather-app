@@ -1,14 +1,13 @@
 import { Row, Col, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
 /* import DatiCity from "./DatiCity"; */
-import Scheda from "./SchedaMeteo";
+/* import Scheda from "./SchedaMeteo"; */
 
 const SearchTab = () => {
   const [cityName, setCityName] = useState("");
   const [lonQuery, setLonQuery] = useState("");
   const [latQuery, setLatQuery] = useState("");
 
-  const [data, setData] = useState([]);
   const [weatherData, setWeatherData] = useState([]);
 
   const mainUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=affeeeefd8a69ba026cefacfe17d898f`;
@@ -18,7 +17,7 @@ const SearchTab = () => {
     let respWeather = await fetch(weatherUrl);
     let dataWeather = await respWeather.json();
     setWeatherData(dataWeather);
-    console.log(weatherData);
+
     return dataWeather;
   };
 
@@ -34,27 +33,23 @@ const SearchTab = () => {
       if (res.ok) {
         const city = await res.json();
         console.log("res.json data city:", city);
-        console.log(city.lat);
-        setData({ data });
-        console.log("data:", data);
-        setLatQuery(city.lat);
-        setLonQuery(city.lon);
-
-        if (city.length > 0) {
-          useEffect =
-            (() => {
-              fetchweather();
-            },
-            [data]);
-        } else {
-          alert("Ops! We didn't find the city");
-        }
+        console.log(city[0].lat);
+        setLatQuery(city[0].lat);
+        setLonQuery(city[0].lon);
+        await fetchweather();
       }
     } catch (error) {
       console.log("Something went wrong during the call", error);
     }
   };
-
+  /* useEffect(() => {
+    if (latQuery.length > 0) {
+      fetchweather();
+    } else {
+      alert("Ops! We didn't find the city");
+    }
+  }, [latQuery]);
+ */
   return (
     <>
       <Row className="d-flex flex-column mx-5 align-content-center mt-3 text-bg-primary border border-secondary">
@@ -82,7 +77,7 @@ const SearchTab = () => {
             <p>Latitudine: {props.lat}</p>
           </div> */}
           {/* <DatiCity></DatiCity> */}
-          <Scheda></Scheda>
+          {/* <Scheda></Scheda> */}
         </Col>
       </Row>
     </>
